@@ -1,0 +1,26 @@
+2022_07_17_01h_53ph_Thay Doi NguyenLieu:	id = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], short_name = ['tcb', 'cgrx', 'mn', 'tcb', 'cgrx', 'kk', 't', 'v', 'v', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'l', 'y'], full_name = ['THỊT BA CHỈ TẤM', 'THỊT CHÂN GIÒ RÚT XƯƠNG', 'ttt', 'THỊT BA CHỈ TẤM', 'THỊT CHÂN GIÒ RÚT XƯƠNG', 'kk', 't', 'v', 'v', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'l', 'y'], supllier = ['C.An', 'C.An', 'ttt', 'C.An', 'C.An', 'kkppp', 't', 'v', 't', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'k', 'y'], unit = ['KG', 'KG', 'tt', 'KG', 'KG', 'kk', 't', 'v', 't', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'l', 'y'], unit_price = ['95000', '86000', '6000', '95000', '860000', '3344', '45', '1', '4', '0', '99', '1', '99', '77', '1', '99', '7', '66', '77']
+2022_07_17_01h_54ph_Thêm NguyenLieu:	id = 19, short_name = s, full_name = s, supllier = s, unit = s, unit_price = 66
+2022_07_17_01h_56ph_Thay Doi NguyenLieu:	id = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], short_name = ['tcb', 'cgrx', 'mn', 'tcb', 'cgrx', 'kk', 't', 'v', 'v', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'l', 'y', 's'], full_name = ['THỊT BA CHỈ TẤM', 'THỊT CHÂN GIÒ RÚT XƯƠNG', 'ttt', 'THỊT BA CHỈ TẤM', 'THỊT CHÂN GIÒ RÚT XƯƠNG', 'kk', 't', 'v', 'v', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'l', 'y', 's'], supllier = ['C.An', 'C.An', 'ttt', 'C.An', 'C.An', 'kkppp', 't', 'v', 't', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'k', 'y', 's'], unit = ['KG', 'KG', 'tt', 'KG', 'KG', 'kk', 'p', 'v', 't', 'p', 'r', 't', 'i', 'l', 'e', 'n', 'o', 'l', 'y', 's'], unit_price = ['95000', '86000', '6000', '95000', '860000', '3344', '45', '1', '4', '0', '99', '1', '99', '77', '1', '99', '7', '66', '77', '66']
+2022_07_17_01h_56ph_Thêm NguyenLieu:	id = 20, short_name = l, full_name = l, supllier = l, unit = l, unit_price = 88
+2022_07_17_01h_57ph_Da luu file Nguyen Lieu2022_07_17_09h_19ph_Thêm NguyenLieu:	id = 21, short_name = u, full_name = u, supllier = u, unit = u, unit_price = 8
+2022_07_17_09h_26ph_Thêm NguyenLieu:	id = 2, short_name = tn, full_name = THỊT NÁCH, supllier = C.An, unit = KG, unit_price = 77000
+2022_07_17_09h_30ph_Thêm NguyenLieu:	id = 3, short_name = mocm, full_name = LÁ MÓC MẬT, supllier = C.An, unit = KG, unit_price = 20000
+2022_07_17_17h_55ph_Thêm NguyenLieu:	short_name = t, full_name = t, supllier = t, unit = t, unit_price = 65
+2022_07_17_17h_58ph_Thêm NguyenLieu:	short_name = v, full_name = v, supllier = v, unit = v, unit_price = 88
+2022_07_17_18h_00ph_Thêm NguyenLieu:	short_name = a, full_name = a, supllier = a, unit = a, unit_price = 1
+2022_07_17_18h_00ph_Thêm NguyenLieu:	short_name = b, full_name = b, supllier = b, unit = b, unit_price = 2
+2022_07_17_18h_00ph_Thay Doi NguyenLieu:	short_name = ['a', 'b'], full_name = ['a', 'b'], supllier = ['a', 'b'], unit = ['a', 'b'], unit_price = ['1', '3']
+2022_07_17_18h_01ph_Da luu file Nguyen Lieu2022_07_17_22h_49ph_Thêm Mon An:
+2022_07_17_23h_14ph_Da luu thay doi Mon An 
+2022_07_17_23h_20ph_Da luu file Mon An 
+2022_07_17_23h_22ph_Da luu file Mon An 
+2022_07_18_21h_44ph_Thêm Mon An:
+2022_07_18_22h_24ph_Da luu file Nguyen Lieu
+2022_07_28_14h_43ph_Thêm NguyenLieu:	short_name = rrr, full_name = đ, supllier = đ, unit = K, unit_price = 666
+2022_07_28_14h_43ph_Thay Doi NguyenLieu:	short_name = ['tcb', 'gs', 'tn', 'mocm', 'rrr'], full_name = ['THỊT BA CHỈ TẤM', 'GIÒ SỐNG', 'THỊT NÁCH', 'LÁ MÓC MẬT', 'đ'], supllier = ['C.An', 'C.An', 'C.An', 'C.An', 'đ'], unit = ['KG', 'KG', 'KG', 'KG', 'K'], unit_price = ['95000', '77000', '77000', '20000', '66677']
+2022_07_28_14h_43ph_Da luu file Nguyen Lieu
+2022_08_01_22h_25ph_Thêm NguyenLieu:	short_name = t, full_name = t, supllier = t, unit = trrr, unit_price = 455
+2022_08_02_23h_57ph_Thay Doi NguyenLieu:	short_name = ['tcb', 'gs', 'tn', 'mocm', 'rrr', 'tuu'], full_name = ['THỊT BA CHỈ TẤM', 'GIÒ SỐNG', 'THỊT NÁCH', 'LÁ MÓC MẬT', 'đ', 't'], supllier = ['C.An', 'C.An', 'C.An', 'C.An', 'đ', 't'], unit = ['KG', 'KG', 'KG', 'KG', 'K', 'trrr'], unit_price = ['95000', '77000', '77000', '20000', '66677', '455']
+2022_08_03_00h_37ph_Thêm NguyenLieu:	short_name = vv, full_name = v, supllier = v, unit = v, unit_price = 1
+2022_08_03_00h_51ph_Thêm NguyenLieu:	short_name = iii, full_name = i, supllier = i, unit = i, unit_price = 2
+2022_08_03_22h_48ph_Thêm NguyenLieu:	short_name = yyy, full_name = yy, supllier = yyy, unit = yyy, unit_price = 6
