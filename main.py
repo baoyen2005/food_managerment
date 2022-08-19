@@ -34,12 +34,14 @@ class MainApp(QMainWindow, ui):
     def Handel_Buttons(self):
         # Nguyen Lieu
         self.pushButton.clicked.connect(self.NguyenLieu)  # ket noi button vs chuyen tab
+        self.tab.clicked.connect(self.NguyenLieu)  # ket noi button vs chuyen tab
         self.pushButton_7.clicked.connect(self.Add_NguyenLieu)
         self.pushButton_8.clicked.connect(self.Save_All_Change_NguyenLieu)
         self.pushButton_10.clicked.connect(self.Save_Excel_NguyenLieu)
 
         # Mon An
         self.pushButton_2.clicked.connect(self.MonAn)
+        self.tab_2.clicked.connect(self.MonAn)
         self.pushButton_2.clicked.connect(self.Show_All_MonAn)
 
         self.pushButton_11.clicked.connect(self.Add_MonAn)
@@ -48,7 +50,10 @@ class MainApp(QMainWindow, ui):
 
         # ThucDOn
         self.pushButton_3.clicked.connect(self.ThucDon)
-        # self.pushButtonXuatThucDon.clicked.connect(self.Save_Excel_Thuc_Don)
+        self.tab_3.clicked.connect(self.ThucDon)
+        self.pushButtonThemThucDon.clicked.connect(self.Add_ThucDon())
+        self.pushButtonLuuThucDon.clicked.connect(self.Save_All_Change_ThucDon())
+        self.pushButtonXuatThucDon.clicked.connect(self.Save_Excel_Thuc_Don)
 
     # -----------------------------------NGUYEN LIEU-----------------------------------------
     def NguyenLieu(self):
@@ -191,10 +196,10 @@ class MainApp(QMainWindow, ui):
         # self.tableWidget_2.setColumnWidth(0, 80)
         self.db.open()
         NguyenLieu = []
-        query1 = QSqlQuery("""SELECT *  FROM NguyenLieu""")
+        query1 = QSqlQuery("""SELECT short_name, unit  FROM NguyenLieu""")
         while query1.next():  # tung hang gia tri
             short_name = query1.value(0)
-            unit = query1.value(3)
+            unit = query1.value(1)
             NguyenLieu.append([short_name, unit])
         # print(NguyenLieu) #[['tcb', 'KG'], ['gs', 'KG'], ['tn', 'KG'], ['mocm', 'KG']]
         print("NguyenLieu:xxxxxxxxxxx ", NguyenLieu)
@@ -250,7 +255,7 @@ class MainApp(QMainWindow, ui):
         # self.tableWidget.resizeColumnsToContents()
 
         # set choices in combobox khi them
-        print("NguyenLieu: ", NguyenLieu)
+        print("NguyenLieu: koooooooooooo ", NguyenLieu)
         NL_short_name_list = []  # list of NL_short_name
         for i in range(len(NguyenLieu)):
             NL_short_name_list.append(NguyenLieu[i][0])
@@ -286,14 +291,13 @@ class MainApp(QMainWindow, ui):
                 """
             )
         # them vao bang DinhLuongMonAn trong ca 2 TH
-        new_id_NLI = get_last_id("DinhLuongMonAn") + 1
         query = QSqlQuery()
         query.exec(
             f"""
             INSERT INTO DinhLuongMonAn (
-                id, dinhMucNguyenLieu , donVi , laMonChinh, idNguyenLieu, idMonAn
+                 dinhMucNguyenLieu , donVi , laMonChinh, idNguyenLieu, idMonAn
             )
-            VALUES ('{new_id_NLI}', '{dinhMuc}', '{donVi}', '{laMonChinh}','{NguyenLieu_short_name}', '{MonAn_short_name}')
+            VALUES ('{dinhMuc}', '{donVi}', '{laMonChinh}','{NguyenLieu_short_name}', '{MonAn_short_name}')
             """
         )
 
@@ -413,7 +417,7 @@ class MainApp(QMainWindow, ui):
             idMonAn = query1.value(5)
             DinhLuongMonAn.append([id, dinhMucNguyenLieu, donVi, laMonChinh, idNguyenLieu, idMonAn])
 
-        print("DinhLuongMonAn: ",
+        print("DinhLuongMonAn thuc don: ",
               DinhLuongMonAn)  # [[0, 0.77, 'tn', 'KG', 'tqlmm'], [1, 0.003, 'mocm', 'KG', 'tqlmm'], [2, 0.5, 'tn', 'KG', 1]]
 
         # print("--------------")
@@ -499,154 +503,154 @@ class MainApp(QMainWindow, ui):
         self.comboBox_thu_7.addItems(Mon_An_short_name_list)
 
 
-def Add_ThucDon(self):
-    self.db.open()
-    # ca =
-    thu = self.lineEdit_8.text()
-    ngayBatDau = self.lineEdit_7.text()
-    ngayKetThuc = self.lineEdit_8.text()
-    ngayKetThuc = self.lineEdit_8.text()
-    NguyenLieu_short_name = self.comboBox.currentText()
-    ratio = self.lineEdit_6.text()
+    def Add_ThucDon(self):
+        self.db.open()
+        # ca =
+        thu = self.lineEdit_8.text()
+        ngayBatDau = self.lineEdit_7.text()
+        ngayKetThuc = self.lineEdit_8.text()
+        ngayKetThuc = self.lineEdit_8.text()
+        NguyenLieu_short_name = self.comboBox.currentText()
+        ratio = self.lineEdit_6.text()
 
-    # get list MonAn_short_name da co
-    MonAn_short_name_list = []
-    short_name = ""
-    MonAn_full_name = ""
-    query1 = QSqlQuery("""SELECT short_name  FROM MonAn""")
-    while query1.next():  # tung hang gia tri
-        short_name += query1.value(0)
-        MonAn_full_name += query1.value(1)
-        MonAn_short_name_list.append(short_name)
+        # get list MonAn_short_name da co
+        MonAn_short_name_list = []
+        short_name = ""
+        MonAn_full_name = ""
+        query1 = QSqlQuery("""SELECT short_name  FROM MonAn""")
+        while query1.next():  # tung hang gia tri
+            short_name += query1.value(0)
+            MonAn_full_name += query1.value(1)
+            MonAn_short_name_list.append(short_name)
 
-    # neu chua ton tai MonAn_short_name
-    if short_name not in MonAn_short_name_list:
-        # them vao bang MonAn
-        print("Them bang MonAn")
+        # neu chua ton tai MonAn_short_name
+        if short_name not in MonAn_short_name_list:
+            # them vao bang MonAn
+            print("Them bang MonAn")
+            query = QSqlQuery()
+            query.exec(
+                f"""
+                       INSERT INTO MonAn (
+                           short_name, full_name
+                       )
+                       VALUES ('{short_name}', '{MonAn_full_name}')
+                       """
+            )
+        # them vao bang NguyenLieuItem trong ca 2 TH
+        new_id_NLI = get_last_id("NguyenLieuItem") + 1
         query = QSqlQuery()
         query.exec(
             f"""
-                   INSERT INTO MonAn (
-                       short_name, full_name
+                   INSERT INTO NguyenLieuItem (
+                       id, ratio, NguyenLieu_short_name, MonAn_short_name
                    )
-                   VALUES ('{short_name}', '{MonAn_full_name}')
+                   VALUES ('{new_id_NLI}', '{ratio}', '{NguyenLieu_short_name}', '{short_name}')
                    """
         )
-    # them vao bang NguyenLieuItem trong ca 2 TH
-    new_id_NLI = get_last_id("NguyenLieuItem") + 1
-    query = QSqlQuery()
-    query.exec(
-        f"""
-               INSERT INTO NguyenLieuItem (
-                   id, ratio, NguyenLieu_short_name, MonAn_short_name
-               )
-               VALUES ('{new_id_NLI}', '{ratio}', '{NguyenLieu_short_name}', '{short_name}')
-               """
-    )
 
-    print("--- Da add Mon An")
-    self.lineEdit_6.setText('')
-    self.lineEdit_7.setText('')
-    self.lineEdit_8.setText('')
-    self.comboBox.setCurrentIndex(0)
-    self.db.commit()
+        print("--- Da add Mon An")
+        self.lineEdit_6.setText('')
+        self.lineEdit_7.setText('')
+        self.lineEdit_8.setText('')
+        self.comboBox.setCurrentIndex(0)
+        self.db.commit()
 
-    log = get_now_time()[1:] + "Thêm Mon An:\n"
-    ghi_log(log)
-    self.Show_All_MonAn()
+        log = get_now_time()[1:] + "Thêm Mon An:\n"
+        ghi_log(log)
+        self.Show_All_MonAn()
 
-    self.db.close()
+        self.db.close()
 
 
-def Show_All_THuc_don(self):
-    print("----------Show ALl Nguyen Lieu")
-    # self.tableWidget.setColumnWidth(0, 80)
-    self.db.open()
-    query = QSqlQuery(
-        """SELECT short_name, full_name, supllier, unit, unit_price FROM NguyenLieu""")  # tra ve true neu truy van thanh cong
-    # làm mới kết quả hiển thị trên table
-    self.tableWidget.setRowCount(0)
-    self.tableWidget.insertRow(0)
+    def Show_All_THuc_don(self):
+        print("----------Show ALl Nguyen Lieu")
+        # self.tableWidget.setColumnWidth(0, 80)
+        self.db.open()
+        query = QSqlQuery(
+            """SELECT short_name, full_name, supllier, unit, unit_price FROM NguyenLieu""")  # tra ve true neu truy van thanh cong
+        # làm mới kết quả hiển thị trên table
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.insertRow(0)
 
-    self.tableWidget.setRowCount(0)  # set vi tri hang bat dau
-    column = self.tableWidget.columnCount()
-    while query.next():  # tung hang gia tri
-        rows = self.tableWidget.rowCount()  # lay vi tri hang hien tai
+        self.tableWidget.setRowCount(0)  # set vi tri hang bat dau
+        column = self.tableWidget.columnCount()
+        while query.next():  # tung hang gia tri
+            rows = self.tableWidget.rowCount()  # lay vi tri hang hien tai
 
-        self.tableWidget.setRowCount(rows + 1)  # set vi tri dung hien tai tren view
-        for col in range(column):
-            self.tableWidget.setItem(rows, col, QTableWidgetItem(
-                str(query.value(col))))  # set các mục dữ liệu , chú ý id là số nguyên nên cần chuyển sang string
-    # self.tableWidget.resizeColumnsToContents()
-    self.db.close()
-
-
-def Save_All_Change_ThucDon(self):
-    self.db.open()
-
-    short_name = []
-    full_name = []
-    supllier = []
-    unit = []
-    unit_price = []
-    row = self.tableWidget.rowCount()  # so hang du lieu
-
-    for r in range(row):
-        short_name.append(self.tableWidget.item(r, 0).text())
-        full_name.append(self.tableWidget.item(r, 1).text())
-        supllier.append(self.tableWidget.item(r, 2).text())
-        unit.append(self.tableWidget.item(r, 3).text())
-        unit_price.append(self.tableWidget.item(r, 4).text())
-
-    self.db.open()
-    query = QSqlQuery()
-
-    query.exec("DELETE from NguyenLieu")
-    for i in range(len(short_name)):
-        query.exec(
-            f"""
-                INSERT INTO NguyenLieu (
-                     short_name, full_name, supllier, unit, unit_price
-                )
-                VALUES ('{short_name[i]}', '{full_name[i]}', '{supllier[i]}', '{unit[i]}', '{unit_price[i]}')
-                """
-        )
-    print("---Da luu Nguyen Lieu")
-    self.db.commit()
-
-    log = get_now_time()[1:] + """Thay Doi NguyenLieu:\t""" + "short_name = " + str(
-        short_name) + ", full_name = " + str(full_name) + ", supllier = " + str(supllier) + ", unit = " + str(
-        unit) + ", unit_price = " + str(unit_price) + "\n"
-    ghi_log(log)
-    self.db.close()
-    self.Show_All_NguyenLieu()
+            self.tableWidget.setRowCount(rows + 1)  # set vi tri dung hien tai tren view
+            for col in range(column):
+                self.tableWidget.setItem(rows, col, QTableWidgetItem(
+                    str(query.value(col))))  # set các mục dữ liệu , chú ý id là số nguyên nên cần chuyển sang string
+        # self.tableWidget.resizeColumnsToContents()
+        self.db.close()
 
 
-def Save_Excel_Thuc_Don(self):
-    self.db.open()
+    def Save_All_Change_ThucDon(self):
+        self.db.open()
 
-    row = self.tableWidget_3.rowCount()  # so hang du lieu
-    table = []
-    for r in range(row):
-        ca = self.tableWidget_3.item(r, 0).text()
-        coCau = self.tableWidget_3.item(r, 1).text()
-        thu2 = self.tableWidget_3.item(r, 2).text()
-        thu3 = self.tableWidget_3.item(r, 3).text()
-        thu4 = self.tableWidget_3.item(r, 4).text()
-        thu5 = self.tableWidget_3.item(r, 5).text()
-        thu6 = self.tableWidget_3.item(r, 6).text()
-        thu7 = self.tableWidget_3.item(r, 7).text()
-        table.append([ca, coCau, thu2, thu3, thu4, thu5, thu6, thu7])
+        short_name = []
+        full_name = []
+        supllier = []
+        unit = []
+        unit_price = []
+        row = self.tableWidget.rowCount()  # so hang du lieu
 
-    df = pd.DataFrame(table,
-                      columns=['Ca', 'Cơ cấu', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'])
+        for r in range(row):
+            short_name.append(self.tableWidget.item(r, 0).text())
+            full_name.append(self.tableWidget.item(r, 1).text())
+            supllier.append(self.tableWidget.item(r, 2).text())
+            unit.append(self.tableWidget.item(r, 3).text())
+            unit_price.append(self.tableWidget.item(r, 4).text())
 
-    time_str = get_now_time()
-    df.to_excel('save_excel/ThucDon' + time_str + '.xlsx', index=False, encoding='utf8')
-    print("--- Da luu file Thuc don")
+        self.db.open()
+        query = QSqlQuery()
 
-    log = get_now_time()[1:] + "Da luu file Thuc don \n"
-    ghi_log(log)
+        query.exec("DELETE from NguyenLieu")
+        for i in range(len(short_name)):
+            query.exec(
+                f"""
+                    INSERT INTO NguyenLieu (
+                         short_name, full_name, supllier, unit, unit_price
+                    )
+                    VALUES ('{short_name[i]}', '{full_name[i]}', '{supllier[i]}', '{unit[i]}', '{unit_price[i]}')
+                    """
+            )
+        print("---Da luu Nguyen Lieu")
+        self.db.commit()
+
+        log = get_now_time()[1:] + """Thay Doi NguyenLieu:\t""" + "short_name = " + str(
+            short_name) + ", full_name = " + str(full_name) + ", supllier = " + str(supllier) + ", unit = " + str(
+            unit) + ", unit_price = " + str(unit_price) + "\n"
+        ghi_log(log)
+        self.db.close()
+        self.Show_All_NguyenLieu()
+
+
+    def Save_Excel_Thuc_Don(self):
+        self.db.open()
+
+        row = self.tableWidget_3.rowCount()  # so hang du lieu
+        table = []
+        for r in range(row):
+            ca = self.tableWidget_3.item(r, 0).text()
+            coCau = self.tableWidget_3.item(r, 1).text()
+            thu2 = self.tableWidget_3.item(r, 2).text()
+            thu3 = self.tableWidget_3.item(r, 3).text()
+            thu4 = self.tableWidget_3.item(r, 4).text()
+            thu5 = self.tableWidget_3.item(r, 5).text()
+            thu6 = self.tableWidget_3.item(r, 6).text()
+            thu7 = self.tableWidget_3.item(r, 7).text()
+            table.append([ca, coCau, thu2, thu3, thu4, thu5, thu6, thu7])
+
+        df = pd.DataFrame(table,
+                          columns=['Ca', 'Cơ cấu', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'])
+
+        time_str = get_now_time()
+        df.to_excel('save_excel/ThucDon' + time_str + '.xlsx', index=False, encoding='utf8')
+        print("--- Da luu file Thuc don")
+
+        log = get_now_time()[1:] + "Da luu file Thuc don \n"
+        ghi_log(log)
 
 
 # -----------------------------------Hàm ngoài class
