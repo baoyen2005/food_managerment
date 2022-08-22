@@ -34,14 +34,14 @@ class MainApp(QMainWindow, ui):
     def Handel_Buttons(self):
         # Nguyen Lieu
         self.pushButton.clicked.connect(self.NguyenLieu)  # ket noi button vs chuyen tab
-        self.tab.clicked.connect(self.NguyenLieu)  # ket noi button vs chuyen tab
+        # self.tab.clicked.connect(self.NguyenLieu)  # ket noi button vs chuyen tab
         self.pushButton_7.clicked.connect(self.Add_NguyenLieu)
         self.pushButton_8.clicked.connect(self.Save_All_Change_NguyenLieu)
         self.pushButton_10.clicked.connect(self.Save_Excel_NguyenLieu)
 
         # Mon An
         self.pushButton_2.clicked.connect(self.MonAn)
-        self.tab_2.clicked.connect(self.MonAn)
+        # self.tab_2.clicked.connect(self.MonAn)
         self.pushButton_2.clicked.connect(self.Show_All_MonAn)
 
         self.pushButton_11.clicked.connect(self.Add_MonAn)
@@ -50,9 +50,10 @@ class MainApp(QMainWindow, ui):
 
         # ThucDOn
         self.pushButton_3.clicked.connect(self.ThucDon)
-        self.tab_3.clicked.connect(self.ThucDon)
-        self.pushButtonThemThucDon.clicked.connect(self.Add_ThucDon())
-        self.pushButtonLuuThucDon.clicked.connect(self.Save_All_Change_ThucDon())
+        # self.tab_3.clicked.connect(self.ThucDon)
+        self.pushButton_3.clicked.connect(self.Show_All_ThucDon)
+        self.pushButtonThemThucDon.clicked.connect(self.Add_ThucDon)
+        self.pushButtonLuuThucDon.clicked.connect(self.Save_All_Change_ThucDon)
         self.pushButtonXuatThucDon.clicked.connect(self.Save_Excel_Thuc_Don)
 
     # -----------------------------------NGUYEN LIEU-----------------------------------------
